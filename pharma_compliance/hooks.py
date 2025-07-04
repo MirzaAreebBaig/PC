@@ -240,7 +240,12 @@ app_license = "mit"
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
-# }
+#
+
+
+
+
+
 
 fixtures = [
     "Custom Field",
@@ -255,6 +260,11 @@ fixtures = [
     {
         "dt": "DocType",
         "filters": [["custom", "=", 1]]
-    }
+    },
+    "Number Card",
+    "Dashboard Chart",
+    "Role",
+    "Role Profile"
 ]
+
 

@@ -1,0 +1,68 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2025-06-29 12:16:33.206245",
+  "name": "Approver",
+  "role_profile": "Approver",
+  "roles": [
+   {
+    "parent": "Approver",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Approver"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2025-06-29 12:05:09.716877",
+  "name": "Creator",
+  "role_profile": "Creator",
+  "roles": [
+   {
+    "parent": "Creator",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Document Creator"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2025-06-29 12:15:52.452836",
+  "name": "Reviewer",
+  "role_profile": "Reviewer",
+  "roles": [
+   {
+    "parent": "Reviewer",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Reviewer"
+   }
+  ]
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2025-07-04 09:55:39.098433",
+  "name": "Reviewer and Approver",
+  "role_profile": "Reviewer and Approver",
+  "roles": [
+   {
+    "parent": "Reviewer and Approver",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Reviewer"
+   },
+   {
+    "parent": "Reviewer and Approver",
+    "parentfield": "roles",
+    "parenttype": "Role Profile",
+    "role": "Approver"
+   }
+  ]
+ }
+]
