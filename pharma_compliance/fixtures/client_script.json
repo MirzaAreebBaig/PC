@@ -1,0 +1,57 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "SOP",
+  "enabled": 1,
+  "modified": "2025-07-02 09:39:28.075399",
+  "module": "Pharma Compliance",
+  "name": "Document User Filters",
+  "script": "frappe.ui.form.on('SOP', {\r\n    onload: function(frm) {\r\n        // Filter users with \"Reviewer\" role for reviewed_by field (excluding current user)\r\n        frm.set_query('reviewed_by', () => {\r\n            return {\r\n                query: \"frappe.core.doctype.user.user.user_query\",\r\n                filters: {\r\n                    role: \"Reviewer\",\r\n                    name: [\"!=\", frappe.session.user]\r\n                }\r\n            };\r\n        });\r\n        \r\n        // Filter users with \"Approver\" role for approved_by field (excluding current user)\r\n        frm.set_query('approved_by', () => {\r\n            return {\r\n                query: \"frappe.core.doctype.user.user.user_query\",\r\n                filters: {\r\n                    role: \"Approver\",\r\n                    name: [\"!=\", frappe.session.user]\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "SOP",
+  "enabled": 1,
+  "modified": "2025-07-02 09:28:20.977539",
+  "module": "Pharma Compliance",
+  "name": "Document Signature Loading",
+  "script": "// Client Script for Document DocType\r\n// Add this as a Client Script in your Document DocType\r\n\r\nfrappe.ui.form.on('SOP', {\r\n    // When prepared_by user is selected\r\n    prepared_by: function(frm) {\r\n        if (frm.doc.prepared_by) {\r\n            load_user_signature(frm, 'prepared_by', 'prepared_sign');\r\n        } else {\r\n            frm.set_value('prepared_sign', '');\r\n        }\r\n    },\r\n    \r\n    // When reviewed_by user is selected\r\n    reviewed_by: function(frm) {\r\n        if (frm.doc.reviewed_by) {\r\n            load_user_signature(frm, 'reviewed_by', 'reviewed_sign');\r\n        } else {\r\n            frm.set_value('reviewed_sign', '');\r\n        }\r\n    },\r\n    \r\n    // When approved_by user is selected\r\n    approved_by: function(frm) {\r\n        if (frm.doc.approved_by) {\r\n            load_user_signature(frm, 'approved_by', 'approved_sign');\r\n        } else {\r\n            frm.set_value('approved_sign', '');\r\n        }\r\n    }\r\n});\r\n\r\n// Function to load user signature from Digital Signature doctype\r\nfunction load_user_signature(frm, user_field, sign_field) {\r\n    const user = frm.doc[user_field];\r\n    \r\n    if (!user) return;\r\n    \r\n    frappe.call({\r\n        method: 'frappe.client.get_list',\r\n        args: {\r\n            doctype: 'Digital Signature',\r\n            filters: {\r\n                user: user\r\n            },\r\n            fields: ['signature'],\r\n            limit: 1\r\n        },\r\n        callback: function(response) {\r\n            if (response.message && response.message.length > 0) {\r\n                const signature_url = response.message[0].signature;\r\n                if (signature_url) {\r\n                    frm.set_value(sign_field, signature_url);\r\n                } else {\r\n                    frappe.msgprint(`No signature found for user: ${user}`);\r\n                    frm.set_value(sign_field, '');\r\n                }\r\n            } else {\r\n                frappe.msgprint(`No digital signature record found for user: ${user}`);\r\n                frm.set_value(sign_field, '');\r\n            }\r\n        },\r\n        error: function(error) {\r\n            console.error('Error loading signature:', error);\r\n            frappe.msgprint('Error loading signature. Please try again.');\r\n        }\r\n    });\r\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "SOP",
+  "enabled": 1,
+  "modified": "2025-07-03 15:27:10.146455",
+  "module": "Pharma Compliance",
+  "name": "SOP Version Number Check",
+  "script": "frappe.ui.form.on('SOP', {\r\n    document_no: function(frm) {\r\n        update_version_number(frm);\r\n    },\r\n    company: function(frm) {\r\n        update_version_number(frm);\r\n    }\r\n});\r\n\r\nfunction update_version_number(frm) {\r\n    if (frm.doc.document_no && frm.doc.company && frm.is_new()) {\r\n        frappe.call({\r\n            method: 'frappe.client.get_count',\r\n            args: {\r\n                doctype: 'SOP',\r\n                filters: {\r\n                    document_no: frm.doc.document_no,\r\n                    company: frm.doc.company\r\n                }\r\n            },\r\n            callback: function(r) {\r\n                if (r.message !== undefined) {\r\n                    let version = String(r.message).padStart(2, '0');\r\n                    frm.set_value('version_number', version);\r\n                }\r\n            }\r\n        });\r\n    }\r\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "SOP",
+  "enabled": 1,
+  "modified": "2025-07-03 15:15:20.693932",
+  "module": null,
+  "name": "SOP Naming",
+  "script": "frappe.ui.form.on('SOP', {\n    document_no: function(frm) {\n        update_document_naming(frm);\n    },\n    \n    version_number: function(frm) {\n        update_document_naming(frm);\n    },\n    \n    company_shortform: function(frm) {\n        update_document_naming(frm);\n    },\n    \n    refresh: function(frm) {\n        // Load on form load if fields already have values\n        update_document_naming(frm);\n    }\n});\n\nfunction update_document_naming(frm) {\n    if (frm.doc.document_no && frm.doc.version_number && frm.doc.company_shortform) {\n        let naming = `${frm.doc.document_no}-${frm.doc.version_number}-${frm.doc.company_shortform}`;\n        frm.set_value('document_naming', naming);\n    }\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "SOP",
+  "enabled": 1,
+  "modified": "2025-07-03 18:22:20.816473",
+  "module": "Pharma Compliance",
+  "name": "SOP Filters For Supersedes",
+  "script": "frappe.ui.form.on('SOP', {\r\n    refresh: function(frm) {\r\n        frm.set_query('supersedes', function() {\r\n            return {\r\n                filters: {\r\n                    'status': 'Effective'\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ }
+]
