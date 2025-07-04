@@ -29,11 +29,11 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "question-sign",
-  "modified": "2025-06-29 11:27:26.727799",
-  "name": "Pending",
+  "icon": "",
+  "modified": "2025-06-29 12:11:55.900409",
+  "name": "Under Approval",
   "style": "",
-  "workflow_state_name": "Pending"
+  "workflow_state_name": "Under Approval"
  },
  {
   "docstatus": 0,
@@ -48,18 +48,18 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2025-06-29 12:11:55.900409",
-  "name": "Under Approval",
-  "style": "",
-  "workflow_state_name": "Under Approval"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2025-06-29 12:13:16.158109",
   "name": "Effective",
   "style": "",
   "workflow_state_name": "Effective"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2025-06-29 11:27:26.727799",
+  "name": "Pending",
+  "style": "",
+  "workflow_state_name": "Pending"
  }
 ]

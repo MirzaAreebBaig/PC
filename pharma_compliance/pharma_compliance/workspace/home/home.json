@@ -1,11 +1,15 @@
 {
  "charts": [
   {
+   "chart_name": "SOP Analytics",
+   "label": "SOPs By Status"
+  },
+  {
    "chart_name": "SOPs By Department",
    "label": "SOPs By Department"
   }
  ],
- "content": "[{\"id\":\"O9QcdTeb5f\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">SOP Analytics</span>\",\"col\":12}},{\"id\":\"UAccs4njZm\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Effective\",\"col\":3}},{\"id\":\"d2cqUifCja\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Under Review\",\"col\":3}},{\"id\":\"etA0ohCMS4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Under Approval\",\"col\":3}},{\"id\":\"MbwGUNkfjz\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOPs Obsolete\",\"col\":3}},{\"id\":\"YuYmqsMZPs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Check All SOPs\",\"col\":6}},{\"id\":\"liPBsaMKt5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add New SOP\",\"col\":6}},{\"id\":\"hi-emqfjzZ\",\"type\":\"chart\",\"data\":{\"chart_name\":\"SOPs By Department\",\"col\":6}},{\"id\":\"Px83QqsQP_\",\"type\":\"chart\",\"data\":{\"chart_name\":\"SOPs By Department\",\"col\":6}}]",
+ "content": "[{\"id\":\"O9QcdTeb5f\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">SOP Analytics</span>\",\"col\":12}},{\"id\":\"UAccs4njZm\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Effective\",\"col\":3}},{\"id\":\"d2cqUifCja\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Under Review\",\"col\":3}},{\"id\":\"etA0ohCMS4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOP Under Approval\",\"col\":3}},{\"id\":\"MbwGUNkfjz\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"SOPs Obsolete\",\"col\":3}},{\"id\":\"YuYmqsMZPs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Check All SOPs\",\"col\":6}},{\"id\":\"liPBsaMKt5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add New SOP\",\"col\":6}},{\"id\":\"hi-emqfjzZ\",\"type\":\"chart\",\"data\":{\"chart_name\":\"SOPs By Department\",\"col\":6}},{\"id\":\"Px83QqsQP_\",\"type\":\"chart\",\"data\":{\"chart_name\":\"SOPs By Status\",\"col\":6}}]",
  "creation": "2025-06-29 11:39:03.761514",
  "custom_blocks": [],
  "docstatus": 0,
@@ -18,26 +22,26 @@
  "is_hidden": 0,
  "label": "Home",
  "links": [],
- "modified": "2025-07-02 09:52:05.110112",
+ "modified": "2025-07-04 12:58:08.165243",
  "modified_by": "Administrator",
  "module": "Pharma Compliance",
  "name": "Home",
  "number_cards": [
   {
    "label": "SOP Effective",
-   "number_card_name": "Total Documents Effective"
+   "number_card_name": "SOP Effective"
   },
   {
    "label": "SOP Under Review",
-   "number_card_name": "Total Documents Under Review"
+   "number_card_name": "SOP Under Review"
   },
   {
    "label": "SOP Under Approval",
-   "number_card_name": "Total Documents Under Approval"
+   "number_card_name": "SOP Under Approval"
   },
   {
    "label": "SOPs Obsolete",
-   "number_card_name": "Total Documents Under Obsolete"
+   "number_card_name": "SOP Obsolete"
   }
  ],
  "owner": "Administrator",

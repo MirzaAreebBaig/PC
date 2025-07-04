@@ -257,14 +257,27 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Workflow Action",
+    "Workflow Action Master",
+    "Role",
+    "Role Profile",
+    "Number Card",
+    "Dashboard Chart",
     {
         "dt": "DocType",
         "filters": [["custom", "=", 1]]
     },
-    "Number Card",
-    "Dashboard Chart",
-    "Role",
-    "Role Profile"
+    {
+        "dt": "Custom Field",
+        "filters": [["dt", "=", "User"]]
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [["doc_type", "=", "User"]]
+    },
+    {
+        "dt": "Role Permission for Page and Report",
+        "filters": [["parenttype", "=", "Role"]]
+    }
 ]
 
 
